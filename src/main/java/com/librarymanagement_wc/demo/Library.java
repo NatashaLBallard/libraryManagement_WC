@@ -21,15 +21,15 @@ public class Library {
     private long id;
 
     @NotNull
-    @Size(min=2)
+    @Size(min = 2)
     private String title;
 
     @NotNull
-    @Size(min=2)
+    @Size(min = 2)
     private String author;
 
     @NotNull
-    @Size(max=4)
+    @Size(max = 4)
     private String year;
 
     //@Size(min=10)
@@ -39,7 +39,7 @@ public class Library {
     private String image;
 
 
-    private  String borrowed;
+    private String borrowed;
 
 
     public long getId() {
@@ -95,29 +95,25 @@ public class Library {
     }
 
 
-
-
     public void setBorrowed(String borrowed) {
 //        this.borrowed = borrowed;
 
 
-
-
-        if (borrowed.equals("borrow"))
-        {
+        if (borrowed.equals("borrow")) {
             this.borrowed = "borrow";
             setBorrowed("borrow");
 
         }
 
 
-            //System.out.println(title + "by" + author + "is already checked out.");
+        //System.out.println(title + "by" + author + "is already checked out.");
 
-       else {
-           if (borrowed.equals("return"))
+        else {
+            if (borrowed.equals("return"))
 //
                 this.borrowed = "return";
-           setBorrowed("return");
+            setBorrowed("return");
         }
     }
 }
+

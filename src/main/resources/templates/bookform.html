@@ -74,10 +74,26 @@
     <span th:if="${#fields.hasErrors('image')}"
           th:errors="*{image}"></span><br/><br/>
 
-    <br/><br/>
+
+
+    <!--<label>Status: </label>-->
+    <!--<select  th:field="*{borrowed}">-->
+        <!--&lt;!&ndash;<option th:each="library: ${libraries}"&ndash;&gt;-->
+                <!--&lt;!&ndash;th:value="${library}"&ndash;&gt;-->
+                <!--&lt;!&ndash;th:text="#{${library.library}}">Borrow</option>&ndash;&gt;-->
+        <!--<option value="borrow">borrow</option>-->
+        <!--<option value="return">return</option>-->
+    <!--</select>-->
+
     <input type="submit" value="Submit" />
 
 
 </form>
+
+
+
+
+
+
 </body>
 </html>

@@ -19,14 +19,14 @@ public class MainController {
 
     //Index page
     @RequestMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 
 
     //List Books page
     @RequestMapping("/list")
-    public String listBooks(Model model){
+    public String listBooks(Model model) {
         model.addAttribute("libraries", libraryRepository.findAll());
         return "list";
     }
@@ -34,11 +34,10 @@ public class MainController {
 
     //Add Books page
     @GetMapping("/add")
-    public String addBooksForm(Model model){
+    public String addBooksForm(Model model) {
         model.addAttribute("library", new Library());
         return "bookform";
     }
-
 
 
     //Process New Book
@@ -58,7 +57,6 @@ public class MainController {
         model.addAttribute("library", libraryRepository.findOne(id));
         return "showdetails";
     }
-
 
 
     //Update of Book
@@ -82,51 +80,52 @@ public class MainController {
 
     //List Books page
     @RequestMapping("/borrow")
-    public String listBorrowedBooks(Model model){
+    public String listBorrowedBooks(Model model) {
         model.addAttribute("libraries", libraryRepository.findAll());
         return "borrow_list";
     }
 
 
+    @RequestMapping(value = "/process_button", method = RequestMethod.GET)
+    public String handlePost(@RequestParam(defaultValue = "return") String status, @ModelAttribute("library") Library library) {
+//        model.addAttribute("libraries", libraryRepository.findAll());
+           // String newStatus = String.valueOf("${library.borrowed}");
 
-
-
-
-    @RequestMapping(value="/process_button", method=RequestMethod.GET)
-    public String handlePost(@RequestParam(defaultValue = "return") String action, @ModelAttribute("library") Library library ){
-
-        if( action.equals("borrow") ){
-//            this.borrowed = "borrow";
+        if (status.equals("borrow")) {
             System.out.println("Book is checked out");
+//            newStatus.equals("borrow");
+            return "validation_page";
 
-        }
-        else if( action.equals("return") ){
+
+        } else if (status.equals("return")) {
             System.out.println("Book is not checked out");
 
         }
         return "borrow_button";
     }
-
-
-    //Update of Borrowed
-    @RequestMapping("/updateborrow/{id}")
-    public String updateBorrowed(@PathVariable("id") long id, Model model) {
-        model.addAttribute("borrowed", libraryRepository.findOne(id));
+}
 
 
 
-        System.out.println("Updated");
-        return "borrow";
+//    //Update of Borrowed
+//    @RequestMapping("/updateborrow/{id}")
+//    public String updateBorrowed(@PathVariable("id") long id, Model model) {
+//        model.addAttribute("borrowed", libraryRepository.findOne(id));
+//
+//
+//
+//        System.out.println("Updated");
+//        return "borrow";
+//
+//    }
 
-    }
-
-
-    //Confirm Borrow Book page
-    @RequestMapping("/borrow_button/{id}")
-    public String confirmBorrowedBook(@PathVariable("id") long id, Model model) {
-        model.addAttribute("libraries", libraryRepository.findOne(id));
-        return "borrow_button";
-    }
+//
+//    //Confirm Borrow Book page
+//    @RequestMapping("/borrow_button/{id}")
+//    public String confirmBorrowedBook(@PathVariable("id") long id, Model model) {
+//        model.addAttribute("libraries", libraryRepository.findOne(id));
+//        return "borrow_button";
+//    }
 
 
 
@@ -232,4 +231,4 @@ public class MainController {
 
 
 
-}
+

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>BORROW a BOOK</title>
+    <title>BORROW a BOOK - Confirmed</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" />
@@ -41,44 +41,33 @@
 
 
 <br/><br/>
-<p><strong>Click "Borrow" to confirm.</strong></p>
+<p><strong>Status set to: borrow</strong></p>
 
-<!--<tr th:each="library: ${libraries}">-->
-<!--<span th:text="${library.title}"></span><br/>-->
-<!--<span th:text="${library.author}"></span><br/>-->
-<!--<span th:text="${library.year}"></span><br/>-->
-<!--<span th:text="${library.isbn}"></span><br/>-->
-<!--<span th:text="${library.borrowed}" ></span><br/>-->
-<!--&lt;!&ndash;<a th:href="@{'//'+${jbcLibrary.image}}" target="_blank"><span th:text="${jbcLibrary.image}"></span></a><br/>&ndash;&gt;-->
-<!--</tr>-->
-    <!--<br/>-->
+
 
 
 <table>
-<tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Year</th>
-    <th>ISBN</th>
-    <!--<th>Image</th>-->
-    <th>Borrowed</th>
-</tr>
-<tr th:selected=libraries: ${library.id}"/>
-    <td  text="${library.title}"></td>
-    <td  text="${library.author}"></td>
-    <td  text="${library.year}"></td>
-    <td  text="${library.isbn}"></td>
-    <td  text="${library.borrowed}" ></td>
-    <!--<a th:href="@{'//'+${jbcLibrary.image}}" target="_blank"><span th:text="${jbcLibrary.image}"></span></a><br/>-->
-</tr>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>ISBN</th>
+        <!--<th>Image</th>-->
+        <th>Borrowed</th>
+    </tr>
+    <tr  th:id="${library.id}">
+        <td  text="${library.title}"></td>
+        <td  text="${library.author}"></td>
+        <td  text="${library.year}"></td>
+        <td  text="${library.isbn}"></td>
+        <td  text="${library.borrowed}" ></td>
+        <!--<a th:href="@{'//'+${jbcLibrary.image}}" target="_blank"><span th:text="${jbcLibrary.image}"></span></a><br/>-->
+    </tr>
 </table>
 
 
 <br/>
 
-
-<form th:id="${library.id}" th:action="@{/process_button}">
-    <input type="submit"  th:name="status" th:value="borrow" th:class="button" th:text="${library.borrowed}" /></form>
 
 
 

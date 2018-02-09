@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+Form page <br/>
+
+
+<form action="#"
+      th:action="@{/process}"
+      th:object="${library}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+
+
+    <strong>Title: </strong>
+    <input type="text" th:field="*{title}" />
+    <span th:if="${#fields.hasErrors('title')}"
+          th:errors="*{title}"></span><br/>
+
+    <strong>Author: </strong>
+    <input type="text" th:field="*{author}" />
+    <span th:if="${#fields.hasErrors('author')}"
+          th:errors="*{author}"></span><br/>
+
+    <strong>Year: </strong>
+    <input type="text" th:field="*{year}" />
+    <span th:if="${#fields.hasErrors('year')}"
+          th:errors="*{year}"></span><br/>
+
+    <strong>ISBN: </strong>
+    <input type="text" th:field="*{isbn}" />
+    <span th:if="${#fields.hasErrors('isbn')}"
+          th:errors="*{isbn}"></span><br/>
+
+    <strong>Image: </strong>
+    <input type="text" th:field="*{image}" />
+    <span th:if="${#fields.hasErrors('image')}"
+          th:errors="*{image}"></span><br/>
+
+
+    <input type="submit" value="Submit" />
+
+
+</form>
+</body>
+</html>

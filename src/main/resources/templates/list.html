@@ -8,7 +8,7 @@
 List page <br/>
 
 
-<a href="/add">Add Book</a> </br/>
+<a href="/add">Add Book</a> <br/>
 
 <table border="1" >
     <tr>
@@ -25,9 +25,9 @@ List page <br/>
         <td th:text="${library.isbn}"></td>
         <td th:text="${library.image}"></td>
         <td>
-            <a th:href="@{/update/{id}(id=${jbcLibrary.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${jbcLibrary.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${jbcLibrary.id})}">Delete</a>
+            <a th:href="@{/update/{id}(id=${library.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${library.id})}">Details</a>
+            <a th:href="@{/delete/{id}(id=${library.id})}">Delete</a>
         </td>
     </tr>
 

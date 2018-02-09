@@ -80,17 +80,49 @@ public class MainController {
 //-----------------------
 
 
+    //List Books page
+    @RequestMapping("/borrow_list")
+    public String listBorrowedBooks(Model model){
+        model.addAttribute("libraries", libraryRepository.findAll());
+        return "borrow_list";
+    }
+
+
+
+
+
+
     @RequestMapping(value="/borrow", method=RequestMethod.GET)
     public String handlePost(@RequestParam(defaultValue = "return") String action, @ModelAttribute("library") Library library ){
 
         if( action.equals("borrow") ){
+//            this.borrowed = "borrow";
             System.out.println("Book is checked out");
+
         }
         else if( action.equals("return") ){
             System.out.println("Book is not checked out");
+
         }
         return "borrow";
     }
+
+
+    //Update of Borrowed
+    @RequestMapping("/updateborrow/{id}")
+    public String updateBorrowed(@PathVariable("id") long id, Model model) {
+        model.addAttribute("borrowed", libraryRepository.findOne(id));
+
+
+
+        System.out.println("Updated");
+        return "borrow";
+
+    }
+
+
+
+
 
 
 //

@@ -7,6 +7,9 @@
 <body>
 
 
+<!--<form>-->
+    <!--<input type="submit"  name="action" value="borrow" class="button"  th:field="${library.borrowed}" /></form>-->
+
 <table border="1" >
     <tr>
         <th>Title</th>
@@ -14,6 +17,8 @@
         <th>Year</th>
         <th>ISBN</th>
         <th>Image</th>
+        <th>Borrowed</th>
+
     </tr>
     <tr th:each="library: ${libraries}">
         <td th:text="${library.title}"></td>
@@ -21,11 +26,16 @@
         <td th:text="${library.year}"></td>
         <td th:text="${library.isbn}"></td>
         <td th:text="${library.image}"></td>
-        <td th:text="${library.borrowed}"></td>
+        <td th:text="${library.borrowed}" th:name="action"></td>
         <td>
             <a th:href="@{/update/{id}(id=${library.id})}">Update</a>
             <a th:href="@{/detail/{id}(id=${library.id})}">Details</a>
             <a th:href="@{/delete/{id}(id=${library.id})}">Delete</a>
+        </td>
+        <td>
+            <form>
+                <input type="submit"  name="action" value="borrow" class="button"  th:field="${library.borrowed}" /></form>
+
         </td>
     </tr>
 
@@ -45,8 +55,6 @@
 </table>
 
 
-<form>
-    <input type="submit"  name="action" value="borrow" class="button"  /></form>
 
 
 

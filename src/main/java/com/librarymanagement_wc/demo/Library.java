@@ -1,6 +1,9 @@
 package com.librarymanagement_wc.demo;
 
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Table;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@DynamicUpdate
+//@Table(name="books", catalog ="library")
 public class Library {
 
     @Id
@@ -89,16 +94,30 @@ public class Library {
         return borrowed;
     }
 
-    public void setBorrowed(String borrowed) {
-        this.borrowed = borrowed;
 
-//        if (borrowed == "false")
+
+
+    public void setBorrowed(String borrowed) {
+//        this.borrowed = borrowed;
+
+
+
+
+        if (borrowed.equals("borrow"))
+        {
+            this.borrowed = "borrow";
+            setBorrowed("borrow");
+
+        }
+
+
+            //System.out.println(title + "by" + author + "is already checked out.");
+
+       else {
+           if (borrowed.equals("return"))
 //
-//            this.borrowed == "false";
-//            //System.out.println(title + "by" + author + "is already checked out.");
-//
-//        else
-//
-//            this.borrowed = true;
+                this.borrowed = "return";
+           setBorrowed("return");
+        }
     }
 }

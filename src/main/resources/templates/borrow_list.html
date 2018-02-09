@@ -5,12 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-List page <br/>
 
 
-<a href="/add">Add Book</a> <br/>
-
-<table border="1" >
+<table name="books" border="1" >
     <tr>
         <th>Title</th>
         <th>Author</th>
@@ -25,15 +22,17 @@ List page <br/>
         <td th:text="${library.year}"></td>
         <td th:text="${library.isbn}"></td>
         <td th:text="${library.image}"></td>
-        <td th:text="${library.borrowed}"></td>
-        <td>
-            <a th:href="@{/update/{id}(id=${library.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${library.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${library.id})}">Delete</a>
-        </td>
+        <td th:text="${library.borrowed}" th:name="action"></td>
+        <!--<td>-->
+            <!--<a th:href="@{/update/{id}/borrowed}(id=${library.id})}">Borrow</a>-->
+            <!--<a th:href="@{/detail/{id}(id=${library.id})}">Details</a>-->
+            <!--<a th:href="@{/delete/{id}(id=${library.id})}">Delete</a>-->
+        <!--</td>-->
     </tr>
 
+
 </table>
+
 
 
 </body>

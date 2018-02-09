@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -80,7 +81,7 @@ public class MainController {
 
 
     @RequestMapping(value="/borrow", method=RequestMethod.GET)
-    public String handlePost(@RequestParam(defaultValue = "return") String action ){
+    public String handlePost(@RequestParam(defaultValue = "return") String action, @ModelAttribute("library") Library library ){
 
         if( action.equals("borrow") ){
             System.out.println("Book is checked out");
@@ -93,6 +94,28 @@ public class MainController {
 
 
 //
+
+//
+//    @RequestMapping(value="/borrow", method=RequestMethod.GET)
+//    public String handlePost(@RequestParam(defaultValue = "borrow") String action, ){
+//
+//        if( action.equals("borrow") ){
+//            System.out.println("Book is checked out");
+//            public ModelAndView borrows() {
+//                ModelAndView newstatus = new ModelAndView("library/borrow");
+//                newstatus.addObject("libraries", libraryRepository.findAll());
+//                return newstatus;
+//                //th:text="${/jbcLibrary.borrowed/{id}" = "borrow" ;
+//
+//            }
+//        else if( action.equals("return") ){
+//                System.out.println("Book is not checked out");
+//            }
+//            return "borrow";
+//        }
+//
+
+
 //    @RequestMapping(value="/borrow", method=RequestMethod.GET)
 //    public String handlePost(@RequestParam(defaultValue = "return") @ModelAttribute Library library, BindingResult result ){
 //        // String borrowed = param.getParameter("borrow");

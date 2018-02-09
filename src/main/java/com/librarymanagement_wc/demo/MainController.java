@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -75,9 +76,61 @@ public class MainController {
     }
 
 
+//-----------------------
+
+
+    @RequestMapping(value="/borrow", method=RequestMethod.GET)
+    public String handlePost(@RequestParam(defaultValue = "false") String action){
+
+        if( action.equals("borrow") ){
+            System.out.println("Book is checked out");
+        }
+        else if( action.equals(null) ){
+            System.out.println("Book is not checked out");
+        }
+        return "borrow";
+    }
+
+//    @RequestMapping(params = "return", method = RequestMethod.POST)
+//    public String saveUser(HttpServletRequest request, @ModelAttribute Library library, BindingResult result) {
+//        // validate your result
+//        // if no errors, save it and redirect to successView.
+//        System.out.println("Book is checked out");
+//        return "";
+//    }
+//
+//
+
+//    @RequestMapping(value = "/jbcLibrary.borrowed/{id}", method = RequestMethod.GET)
+//    public String status(@RequestParam(defaultValue = "false") @ModelAttribute("library") Library library) {
+//        //String input = library.getBorrowed();
+//        String borrowed = param.getParameter("borrow");
+//        if(library.borrowed=="borrow"){
+//            System.out.println("Book is checked out");
+//        }
+//        else
+//            System.out.println("Book is not checked out");
+//
+//        return "";
+//    }
 
 
 
+
+
+//
+//    @RequestMapping("/checkbox-process")
+//    //@RequestMapping(value = "/jbcLibrary.borrowed/{id}", method=RequestMethod.GET)
+//    public String checked(@RequestParam(defaultValue = "false") @ModelAttribute("library")  Library library){
+//        if (library.isBorrowed()== true) {
+//            System.out.println("Book is checked out");
+//
+//        }
+//
+//        else
+//            System.out.println("Book is not checked out");
+//
+//        return "";
 
 
 

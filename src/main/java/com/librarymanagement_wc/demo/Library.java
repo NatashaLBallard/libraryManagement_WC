@@ -91,5 +91,14 @@ public class Library {
 
     public void setBorrowed(String borrowed) {
         this.borrowed = borrowed;
+
+//        if (borrowed == "false")
+//
+//            this.borrowed == "false";
+//            //System.out.println(title + "by" + author + "is already checked out.");
+//
+//        else
+//
+//            this.borrowed = true;
     }
 }

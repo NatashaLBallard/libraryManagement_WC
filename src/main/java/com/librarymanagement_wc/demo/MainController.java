@@ -48,7 +48,7 @@ public class MainController {
             return "bookform";
         }
         libraryRepository.save(library);
-        return "redirect:/";
+        return "redirect:/list";
     }
 
 
@@ -81,7 +81,7 @@ public class MainController {
 
 
     //List Books page
-    @RequestMapping("/borrow_list")
+    @RequestMapping("/borrow")
     public String listBorrowedBooks(Model model){
         model.addAttribute("libraries", libraryRepository.findAll());
         return "borrow_list";
@@ -92,7 +92,7 @@ public class MainController {
 
 
 
-    @RequestMapping(value="/borrow", method=RequestMethod.GET)
+    @RequestMapping(value="/borrow_buttonnn", method=RequestMethod.GET)
     public String handlePost(@RequestParam(defaultValue = "return") String action, @ModelAttribute("library") Library library ){
 
         if( action.equals("borrow") ){
@@ -121,6 +121,12 @@ public class MainController {
     }
 
 
+    //List Books page
+    @RequestMapping("/borrow_button")
+    public String listBorrowedBooks(Model model){
+        model.addAttribute("libraries", libraryRepository.findAll());
+        return "borrow_list";
+    }
 
 
 

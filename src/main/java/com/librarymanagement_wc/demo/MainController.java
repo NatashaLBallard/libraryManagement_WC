@@ -92,7 +92,7 @@ public class MainController {
 
 
 
-    @RequestMapping(value="/borrow_buttonnn", method=RequestMethod.GET)
+    @RequestMapping(value="/process_button", method=RequestMethod.GET)
     public String handlePost(@RequestParam(defaultValue = "return") String action, @ModelAttribute("library") Library library ){
 
         if( action.equals("borrow") ){
@@ -104,7 +104,7 @@ public class MainController {
             System.out.println("Book is not checked out");
 
         }
-        return "borrow";
+        return "borrow_button";
     }
 
 
@@ -121,17 +121,33 @@ public class MainController {
     }
 
 
-    //List Books page
-    @RequestMapping("/borrow_button")
-    public String listBorrowedBooks(Model model){
-        model.addAttribute("libraries", libraryRepository.findAll());
-        return "borrow_list";
+    //Confirm Borrow Book page
+    @RequestMapping("/borrow_button/{id}")
+    public String confirmBorrowedBook(@PathVariable("id") long id, Model model) {
+        model.addAttribute("libraries", libraryRepository.findOne(id));
+        return "borrow_button";
     }
 
 
 
-
+//    //Process New Book
+//    @PostMapping("/process")
+//    public String processForm(@Valid @ModelAttribute("library") Library library, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "bookform";
+//        }
+//        libraryRepository.save(library);
+//        return "redirect:/list";
+//    }
 //
+
+
+
+
+
+
+
+
 
 //
 //    @RequestMapping(value="/borrow", method=RequestMethod.GET)

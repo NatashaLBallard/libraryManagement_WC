@@ -41,51 +41,21 @@
 
 
 <br/><br/>
-<p><strong>Select which book to borrow.</strong></p>
+<p><strong>Click "Borrow" to confirm.</strong></p>
 
 
-<table>
-    <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Year</th>
-        <th>ISBN</th>
-        <th>Image</th>
-        <th>Borrowed</th>
-
-    </tr>
-
-    <tr th:each="library: ${libraries}">
-        <td th:text="${library.title}"></td>
-        <td th:text="${library.author}"></td>
-        <td th:text="${library.year}"></td>
-        <td th:text="${library.isbn}"></td>
-        <td th:text="${library.image}"></td>
-        <td th:text="${library.borrowed}" th:name="action"></td>
-        <td>
-            <a th:href="@{/update/{id}(id=${library.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${library.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${library.id})}">Delete</a>
-        </td>
-    </tr>
+<span th:text="${library.title}"></span><br/>
+<span th:text="${library.author}"></span><br/>
+<span th:text="${library.year}"></span><br/>
+<span th:text="${library.isbn}"></span><br/>
+<span th:text="${library.borrowed}" value="this.borrowed"></span><br/>
+<!--<a th:href="@{'//'+${jbcLibrary.image}}" target="_blank"><span th:text="${jbcLibrary.image}"></span></a><br/>-->
+<br/>
 
 
 
 
-    <!--<button formmethod="post"-->
-            <!--formaction="borrow-btn"-->
-            <!--value="borrow"-->
-            <!--modelAttribute="borrow-book"-->
-            <!--type="button"-->
-            <!--name="borrowbook"-->
-            <!--id="borrowbookid"-->
-            <!--class="btn btn-borrow">BORROW</button>-->
-
-
-</table>
-
-<form>
+<form th:id="${library.id}">
     <input type="submit"  th:name="action" value="borrow" class="button" th:text="${library.borrowed}" /></form>
 
 

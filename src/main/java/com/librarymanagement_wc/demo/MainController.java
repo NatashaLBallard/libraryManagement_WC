@@ -80,16 +80,32 @@ public class MainController {
 
 
     @RequestMapping(value="/borrow", method=RequestMethod.GET)
-    public String handlePost(@RequestParam(defaultValue = "false") String action){
+    public String handlePost(@RequestParam(defaultValue = "return") String action ){
 
         if( action.equals("borrow") ){
             System.out.println("Book is checked out");
         }
-        else if( action.equals(null) ){
+        else if( action.equals("return") ){
             System.out.println("Book is not checked out");
         }
         return "borrow";
     }
+
+
+//
+//    @RequestMapping(value="/borrow", method=RequestMethod.GET)
+//    public String handlePost(@RequestParam(defaultValue = "return") @ModelAttribute Library library, BindingResult result ){
+//        // String borrowed = param.getParameter("borrow");
+//        if(library.borrowed=="borrow") {
+//            System.out.println("Book is checked out");
+//        }
+//        else {
+//            System.out.println("Book is not checked out");
+//        }
+//        return "Library.get(id)";
+//
+
+
 
 //    @RequestMapping(params = "return", method = RequestMethod.POST)
 //    public String saveUser(HttpServletRequest request, @ModelAttribute Library library, BindingResult result) {
